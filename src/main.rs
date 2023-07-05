@@ -1,14 +1,12 @@
 use std::cmp::Ordering;
 use std::collections::{BinaryHeap, HashMap};
 
-// Structure representing a vertex in the graph
 #[derive(Debug, PartialEq, Eq)]
 struct Vertex {
     id: usize,
     distance: i32,
 }
 
-// Implementing the ordering for the Vertex struct
 impl Ord for Vertex {
     fn cmp(&self, other: &Self) -> Ordering {
         other.distance.cmp(&self.distance)
@@ -21,7 +19,6 @@ impl PartialOrd for Vertex {
     }
 }
 
-// Structure representing the graph
 #[derive(Debug)]
 struct Graph {
     vertices: usize,
@@ -60,7 +57,6 @@ impl Graph {
 
         while let Some(Vertex { id, distance }) = priority_queue.pop() {
             if id == destination {
-                // Reconstruct the path
                 let mut path = vec![id];
                 let mut current = id;
                 while let Some(prev) = previous[current] {
